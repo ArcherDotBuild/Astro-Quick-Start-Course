@@ -1,0 +1,23 @@
+---
+const name = 'John Doe'
+console.log(name);
+
+const users = [
+  {name: 'Goku', age: 36},
+  {name: 'Gohan', age: 18},
+  {name: 'Trunks', age: 19},
+]
+---
+
+<h1>Hello {name}</h1>
+
+<ul>
+  {users.map((user) => (
+    <li>{user.name}, {user.age}</li>
+  ))}
+</ul>
+
+<script>
+  const name = 'John Doe'
+  console.log(name);
+</script>
