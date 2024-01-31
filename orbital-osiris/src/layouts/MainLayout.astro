@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets'
 import logo from '../images/logo.png'
+
+const { title = 'Articles, Stories & Tutorials For Tech People'} = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -12,7 +14,7 @@ import logo from '../images/logo.png'
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.js"
     integrity="sha512-BJ/5sR2hFxQTKin/55JQCcMTObShDBAmVjL/3NR/MVcrhyOazJjAgvROem03+HYyGw16SVdSfoWCFGr9syxAKA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <title>Tech People Blog</title>
+  <title>{title}</title>
 </head>
 
 <body class="">
