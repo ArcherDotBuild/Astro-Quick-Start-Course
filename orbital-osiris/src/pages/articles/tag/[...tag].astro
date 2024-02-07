@@ -1,0 +1,29 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro'
+import ArticleCard from '../../../components/ArticleCard.astro' 
+import { getCollection } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+import { capitalize } from '../../../utils.ts'
+
+const { tag } = Astro.params
+
+if(tag === undefined) {
+  throw new Error('Tag is required')
+}
+
+const allBlogArticles: CollectionEntry<'blog'>[] =
+(await getCollection('blog'))
+    .sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+
+const tagArticles = allBlogArticles.filter(article => article.data.tags.includes(tag))
+---
+
+<MainLayout>
+  <h1 class="text-2xl pb-3">#{capitalize(tag)}</h1>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {tagArticles.map((article) => (
+        <ArticleCard article={article} />
+        ))}
+      </div>
+</MainLayout>
