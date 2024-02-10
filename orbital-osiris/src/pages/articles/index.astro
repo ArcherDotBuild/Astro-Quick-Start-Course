@@ -1,6 +1,7 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro'
-import ArticleCard from '../../components/ArticleCard.astro' 
+import ArticleCard from '../../components/ArticleCard.astro'
+import SearchForm from '../../components/SearchForm.astro' 
 import { getCollection } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 
@@ -12,20 +13,25 @@ const allBlogArticles: CollectionEntry<'blog'>[] =
 
 <MainLayout>
   <h1 class="text-2xl pb-3">All Articles</h1>
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {allBlogArticles.map((article) => (
-        <ArticleCard article={article} />
-        ))}
-      </div>
 
-        <!-- Pagination -->
-        <div class="flex justify-between mt-10">
-          <a href="#" class="inline-block bg-indigo-100 px-3 py-2 hover:bg-indigo-600 hover:text-white rounded-lg">
-            Previous
-          </a>
-          <a href="#"
-           class="inline-block bg-indigo-100 px-3 py-2 hover:bg-indigo-600 hover:text-white rounded-lg">
-            Next
-          </a>
-        </div>
+  <SearchForm />
+
+  <br>
+  
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {allBlogArticles.map((article) => (
+    <ArticleCard article={article} />
+    ))}
+  </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-between mt-10">
+      <a href="#" class="inline-block bg-indigo-100 px-3 py-2 hover:bg-indigo-600 hover:text-white rounded-lg">
+        Previous
+      </a>
+      <a href="#"
+      class="inline-block bg-indigo-100 px-3 py-2 hover:bg-indigo-600 hover:text-white rounded-lg">
+        Next
+      </a>
+    </div>
 </MainLayout>
